@@ -160,11 +160,11 @@ window.onload = function () {
    function amptyDraft() {
       if (!Object.values(order).length > 0) {
          submitBtn.setAttribute('disabled', 'disabled');
-         dataCartEmpty.classList.remove('none');
+         dataCartEmpty.innerHTML = 'Корзина пуста';
          return false;
       }
       submitBtn.removeAttribute('disabled', 'disabled');
-      dataCartEmpty.classList.add('none');
+      dataCartEmpty.innerHTML = 'Корзина';
    }
    amptyDraft();
    //Отправка формы 
