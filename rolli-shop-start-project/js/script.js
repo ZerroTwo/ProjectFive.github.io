@@ -26,9 +26,9 @@ window.onload = function () {
          dataCounter = counterWrapper.querySelector('[data-counter]'),
          addDraft = item.querySelector('[data-cart]');
       //Событие на увеличение/уменьшение счетчика
-      counterWrapper.addEventListener('click', incrimation);
-      // Функиция счётчика на дикрримент и инкримент
-      function incrimation(e) {
+      counterWrapper.addEventListener('click', cartFunction);
+      // Функиции карточки
+      function cartFunction(e) {
          //Определяем на что нажали
          const target = e.target,
             closest = target.closest('.counter-wrapper').querySelector('[data-counter]'),
@@ -49,10 +49,9 @@ window.onload = function () {
                }
             };
             //------
-            if (closest.innerHTML == 1) {
-               return false
+            if (closest.innerHTML > 1) {
+              --closest.innerHTML; 
             };
-            --closest.innerHTML;
          } else if (target.dataset.action == 'plus') {
             if (checkItem) {
                ++order[checkItem.dataset.id].curent;
@@ -129,7 +128,7 @@ window.onload = function () {
             cartWrapper.insertAdjacentHTML('beforeend', innerHTML);
             //------------
             //Перебираем и присваеваем каждому слушателя
-            cartWrapper.querySelector(`[data-id="${id}"]`).addEventListener('click', incrimation);
+            cartWrapper.querySelector(`[data-id="${id}"]`).addEventListener('click', cartFunction);
             amptyDraft();
          }
          fullPrice();
